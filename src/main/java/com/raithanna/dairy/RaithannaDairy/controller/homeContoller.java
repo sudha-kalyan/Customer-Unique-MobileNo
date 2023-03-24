@@ -54,6 +54,7 @@ public class homeContoller {
         return "login";
     }
 
+
     @RequestMapping("/homePage")
     public String homePage(HttpServletRequest request ,HttpSession session, Model model) {
         List<String> messages = new ArrayList<>();
@@ -63,7 +64,26 @@ public class homeContoller {
         return "home";
     }
 
+    @GetMapping("/changePassword")
+    public String changePassword() {
 
+        return "changePassword";
+    }
+    @PostMapping("/changePassword")
+    public String changePassword( HttpServletRequest request, Model model,@RequestParam String mobileNo,  @RequestParam String oldPassword, @RequestParam String newPassword) {
+        System.out.println(mobileNo);
+        System.out.println(oldPassword);
+        System.out.println(newPassword);
+//        System.out.println(con_password);
+        userModel userModel = userModelRepository.findByMobileAndPassword(mobileNo, oldPassword);
+
+        if(userModel!=null)
+        {
+            userModel.setPassword(newPassword);
+            userModelRepository.save(userModel);
+        }
+        return "loginPage";
+    }
 
 }
 

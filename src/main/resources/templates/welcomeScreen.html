@@ -15,7 +15,7 @@
     left: 0;
     bottom: 0;
     width: 100%;
-  background-color: #5DADE2;
+  background-color: blue;
     text-align: center;
     }
 
@@ -24,7 +24,7 @@
    left: 0;
    bottom: 0;
    width: 100%;
-   background-color: #5DADE2;
+   background-color: blue;
    text-align: center;
 }
     </style>
@@ -33,9 +33,11 @@
 <div th:replace="fragments/navbar :: navbar_header"></div>
 
 <div class="col-md-3 col-lg-10 col-xl-12">
+    <br>
+    <br>
     <center>
 
-        <img src="../static/image/jacknjill.jpg"  width="500"height="400"
+        <img src="../static/image/jacknjill.jpg"  width="700"height="400"
              th:src="@{image/jacknjill.jpg}"/>
 
     </center>
@@ -53,7 +55,7 @@
         <form  action="loginPage" method="Post">
 
 
-            <button id="submit1" class="btn btn-primary">Sign in</button>
+            <button id="submit" class="btn btn-primary">Sign in</button>
 
 
 
@@ -63,6 +65,16 @@
 <div th:replace="fragments/navbar :: navbar_footer"></div>
 
 </body>
+<script type="text/javascript">
+
+
+$(document).ready(function(){
+$('#submit').prop('disabled',true);
+});
+
+$('#submit').prop('disabled',false);
+});
+</script>
 
 </html>
 

@@ -25,14 +25,34 @@
     transform: rotate(-90deg);
 }
 
-.name{
-width:400px;
-border:1px solid blue;
-border-radius:3px;
-outline:0;
-padding:7px;
-background-colour:#fff;
-}
+ input#name{
+  width:400px;
+  border:1px solid blue;
+  border-radius:3px
+  outline:0;
+  padding:5px;
+  background-colour:#fff;
+
+  }
+ input#mobileNo{
+  width:400px;
+  border:1px solid blue;
+  border-radius:3px
+  outline:0;
+  padding:5px;
+  background-colour:#fff;
+
+  }
+
+  input#email{
+  width:400px;
+  border:1px solid blue;
+  border-radius:3px
+  outline:0;
+  padding:5px;
+  background-colour:#fff;
+
+  }
 
 
 .header_bar {
@@ -40,7 +60,7 @@ background-colour:#fff;
     left: 0;
     bottom: 0;
     width: 100%;
-  background-color: #5DADE2;
+  background-color: blue;
     text-align: center;
     }
 
@@ -49,23 +69,31 @@ background-colour:#fff;
    left: 0;
    bottom: 0;
    width: 100%;
-   background-color: #5DADE2;
+   background-color: blue;
    text-align: center;
+}
+
+#form_login {
+    left      : 50%;
+    top       : 50%;
+    position  : absolute;
+    transform : translate(-50%, -50%);
 }
   </style>
 </head>
 <body style="background-color:#fff;">
 <div th:replace="fragments/navbar :: navbar_header"></div>
 <div th:replace="fragments/navbar :: navbar_menu"></div>
-<div class="container">
+<div class="container-fluid">
     <div th:replace="fragments/message :: message_html"></div>
 </div>
-<div class ="container">
+<div class ="container-fluid">
     <div class="card-body">
         <div class="col">
         <div class="col-lg-7 col-md-7 col-sm-3 container justify-content-middle card-body">
-            <h3 class = "text-middle"> <font color="#000080 ">
-                <b>Create Customer</b> </font></h3>
+            <h2 class = "text-middle"> <font color="#000080 ">
+                <b>Create Customer</b> </font></h2>
+            <hr>
 <!--        <form  action="home" method="post"></form>-->
             <div class = "row auto-align">
                 <form th:action="@{/customers}" th:object = "${Custome}" method="POST">
