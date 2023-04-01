@@ -22,6 +22,7 @@ public class appentryController {
     public String register(Model model,@ModelAttribute userModel user, HttpServletRequest request, HttpSession session){
         List<String> messages = new ArrayList<>();
         System.out.println(user);
+
         try{
         userModelRepository.save(user);}
         catch (Exception handlerException){

@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
+
+
 <head>
-<meta charset="ISO-8859-1">
-<title></title>
-<link rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous">
+    <meta charset="ISO-8859-1">
+    <title></title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
     <style>
 .navbar-nav li:hover > ul.dropdown-menu {
     display: block;
@@ -88,61 +91,77 @@
     <div th:replace="fragments/message :: message_html"></div>
 </div>
 <div class ="container-fluid">
+
     <div class="card-body">
         <div class="col">
-        <div class="col-lg-7 col-md-7 col-sm-3 container justify-content-middle card-body">
-            <h2 class = "text-middle"> <font color="#000080 ">
-                <b>Create Customer</b> </font></h2>
-            <hr>
-<!--        <form  action="home" method="post"></form>-->
-            <div class = "row auto-align">
-                <form th:action="@{/customers}" th:object = "${Custome}" method="POST">
-                    <div class ="form-group">
-                        <label> Customer Name</label>
-                        <input
-                                type = "text"
-                                id="name"
-                                name = "name"
-                                th:field = "*{name}"
-                                class = "form-control"
-                                placeholder="Enter Customer Name"
-                        />
-                    </div>
-                    <div class ="form-group">
-                        <label> Customer MobileNo</label>
+            <div class="col-lg-7 col-md-7 col-sm-3 container justify-content-middle card-body">
+                <h2 class = "text-middle"> <font color="#000080 ">
+                    <b>Create Customer</b> </font></h2>
 
-                        <input type="text" id="mobileNo" placeholder="Phone..." maxlength="10" class="form-control">
-                    </div>
-                    <div class ="form-group">
-                        <label> Customer Email </label>
-                        <input
-                                type = "text"
-                                id="email"
-                                name = "Email"
-                                th:field = "*{Email}"
-                                class = "form-control"
-                                placeholder="Enter Customer Email"
-                        />
-                    </div>
-                    <div class = "box-footer">
-                        <button id="submit" type="" class = "btn btn-primary">
-                            Submit
-                        </button>
-                    </div>
-                </form>
+
+
+
+                <h1>
+
+                    <small th:text="${msg}" >Subtitle</small>
+                </h1>
+
+
+                <hr>
+                <!--        <form  action="home" method="post"></form>-->
+                <div class = "row auto-align">
+                    <form th:action="@{/createCustomer}" th:object = "${Custome}" method="POST">
+                        <div class ="form-group">
+                            <label> Customer Name</label>
+                            <input
+                                    type = "text"
+                                    id="name"
+                                    name = "name"
+                                    th:field = "*{name}"
+                                    class = "form-control"
+                                    placeholder="Enter Customer Name"
+                            />
+                        </div>
+                        <div class ="form-group">
+                            <label> Customer MobileNo</label>
+                            <input
+                                    type = "text"
+                                    name = "mobileNo"
+                                    id   = "mobileNo"
+                                    th:field = "*{mobileNo}"
+                                    class = "form-control"
+                                    placeholder="Enter Customer MobileNo"
+                            />
+                        </div>
+                        <div class ="form-group">
+                            <label> Customer Email </label>
+                            <input
+                                    type = "text"
+                                    id="email"
+                                    name = "Email"
+                                    th:field = "*{Email}"
+                                    class = "form-control"
+                                    placeholder="Enter Customer Email"
+                            />
+                        </div>
+                        <div class = "box-footer">
+                            <button id="submit" type="" class = "btn btn-primary">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+
             </div>
 
-
+        </div>
     </div>
-
-</div>
-</div>
 </div>
 <div th:replace="fragments/navbar :: navbar_footer"></div>
 <!--</div>-->
 </body>
 <script type="text/javascript">
-
 
 $(document).ready(function(){
 $('#submit').prop('disabled',true);
@@ -160,6 +179,106 @@ $('#submit').prop('disabled',false);
 
       if (!(arr.indexOf(kk)>=0))
           e.preventDefault();
+
+
+          $("#mobile-num").on("blur", function(){
+        var mobNum = $(this).val();
+        var filter = /^\d*(?:\.\d{1,2})?$/;
+
+          if (filter.test(mobNum)) {
+            if(mobNum.length==10){
+                  alert("valid");
+              $("#mobile-valid").removeClass("hidden");
+              $("#folio-invalid").addClass("hidden");
+             } else {
+                alert('Please put 10  digit mobile number');
+               $("#folio-invalid").removeClass("hidden");
+               $("#mobile-valid").addClass("hidden");
+                return false;
+              }
+            }
+            else {
+              alert('Not a valid number');
+              $("#folio-invalid").removeClass("hidden");
+              $("#mobile-valid").addClass("hidden");
+              return false;
+           }
+
   });
+
+
+ });
+
+
+
+
+
+
+
+<!--          $('.error').hide();-->
+<!--          $('#submit').click(function(){-->
+<!--          var name = $('#mobileNo').val();-->
+<!--        var email = $('#email').val();-->
+
+<!--        if(mobileNo== ''){-->
+<!--          $('#mobileNo').next().show();-->
+<!--          return false;-->
+<!--        }-->
+<!--        if(email== ''){-->
+<!--          $('#email').next().show();-->
+<!--          return false;-->
+<!--        }-->
+
+<!--        if(IsmobileNo(mobileNo)==false){-->
+<!--          $('#invalid_mobileNo').show();-->
+<!--          return false;-->
+<!--        }-->
+
+<!--        $.post("", $("#myform").serialize(),  function(response) {-->
+<!--          $('#myform').fadeOut('slow',function(){-->
+<!--          $('#correct').html(response);-->
+<!--          $('#correct').fadeIn('slow');-->
+<!--       });-->
+
+<!--$("#mobileNo").on("click", function(){-->
+<!--        var mobileNo = $(this).val();-->
+<!--        var filter = /^\d*(?:\.\d{1,2})?$/;-->
+
+<!--          if (filter.test(mobileNo)) {-->
+<!--            if(mobileNo.length==10){-->
+<!--                  alert("valid");-->
+<!--              $("#mobileNo-valid").removeClass("hidden");-->
+<!--              $("#folio-invalid").addClass("hidden");-->
+<!--             } else {-->
+<!--                alert('Please put 10  digit mobile number');-->
+<!--               $("#folio-invalid").removeClass("hidden");-->
+<!--               $("#mobileNo-valid").addClass("hidden");-->
+<!--                return false;-->
+<!--              }-->
+<!--            }-->
+<!--            else {-->
+<!--              alert('Not a valid number');-->
+<!--              $("#folio-invalid").removeClass("hidden");-->
+<!--              $("#mobileNo-valid").addClass("hidden");-->
+<!--              return false;-->
+<!--           }-->
+<!--           });-->
+
+
+
+
   </script>
+<script>
+<!--    $("#submit").click(function(){-->
+<!--    var mobileNo = $("#mobileNo").val();-->
+
+<!--    $.ajax({-->
+<!--    url:'/checkmobileNo',-->
+<!--    type: 'POST',-->
+<!--    data:{mobileNo:mobileNo},-->
+
+
+
+</script>
+
 </html>

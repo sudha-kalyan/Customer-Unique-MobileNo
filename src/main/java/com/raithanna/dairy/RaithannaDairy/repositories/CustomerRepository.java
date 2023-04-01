@@ -15,6 +15,7 @@ public interface CustomerRepository extends CrudRepository<customer,Integer> {
 
 
     List<customer>  findByOrderByIdDesc();
+    customer findByMobileNo(String mobileNo);
 
 }
 

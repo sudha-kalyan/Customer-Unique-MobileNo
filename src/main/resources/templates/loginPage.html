@@ -100,9 +100,9 @@ button {
                 <div class="row">
                     <div class="col-md-10 col-lg-20 col-xl-5 offset-xl-4">
                         <div v-if="!registerActive" class="card login" v-bind:class="{ error: emptyFields }">
-                            <center> <h3> Login</h3> </center>
+                            <center> <h2> <b>Login</b></h2> </center>
                             <center><p><font color="green">
-                                Please Login Hear..!!!
+                                <b> Please Login Hear..!!!</b>
                             </font></p></center>
 
                             <form  action="login" method="post">
@@ -115,7 +115,7 @@ button {
                                 <input type="password" class="form-control" name="password" id="inputPassword4" placeholder="Password">
 
                                 <br>
-                                <button type="submit"id="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
+                                <button type="submit"id="submit" class="btn btn-primary btn-block mb-3"><b>Sign in</b></button>
                                 <p>Don't have an account? <a href="/register" @click="registerActive = !registerActive, emptyFields = false">Register</a>
                                 </p>
                                 <p><a href="/changePassword">Change Password</a></p>
